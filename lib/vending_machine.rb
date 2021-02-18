@@ -28,4 +28,18 @@ class VendingMachine
     print "you've got #{@balance} pounds for #{@name}"
   end
 
+  def vend
+    if @stock == 0
+      print "insufficient stock"
+    else
+      if @balance >= @price
+        @balance -= @price
+        @stock -= 1
+        print "Enjoy your #{name}, your balance is now #{balance}"
+      else
+        print "You don't have enough moneyz :("
+      end
+    end
+  end
+
 end

@@ -31,6 +31,34 @@ describe VendingMachine do
     end
   end
 
+  describe 'vend' do
+    it 'does not vendy candy if not enough balance' do
+      expect do
+        candy.stock = 3
+        candy.vend
+      end.to output("You don't have enough moneyz :(").to_stdout
+    end
+  end
+
+  describe 'vend' do
+    it 'vends candy as there is enough balance' do
+      expect do
+        candy.stock = 3
+        candy.balance = 12
+        candy.vend
+      end.to output("Enjoy your candy, your balance is now 2").to_stdout
+    end
+  end
+
+  describe 'vend' do
+    it 'cannot vend candy if the stock is too low' do
+      expect do
+        candy.stock = 0
+        candy.vend
+      end.to output("insufficient stock").to_stdout
+    end
+  end
+
 end
 
 
