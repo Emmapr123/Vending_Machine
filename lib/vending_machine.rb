@@ -9,9 +9,23 @@
 
 
 class VendingMachine
-  attr_accessor 'name'
+  attr_accessor :name, :price, :stock, :balance
 
-  def initialize(name)
+  def initialize(name, price)
     @name = name
+    @price = price
+    @stock = 0
+    @balance = 0
   end
+
+  def restock(stock_amount)
+    @stock += stock_amount
+     print "Current candy stock: #{@stock}"
+  end
+
+  def funds(money)
+    @balance += money
+    print "you've got #{@balance} pounds for #{@name}"
+  end
+
 end

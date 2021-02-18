@@ -1,13 +1,47 @@
 require 'vending_machine'
 
 describe VendingMachine do
-  let(:candy) { VendingMachine.new 'candy' }
+  let(:candy) { VendingMachine.new 'candy', 10}
 
   it 'has a getter' do
     expect(candy.name).to eq 'candy'
   end
 
+  it 'has a price getter/setter' do
+    expect(candy.price).to eq 10
+  end
+
+  it 'has a stock getter/setter' do
+    expect(candy.stock).to eq 0
+  end
+
+  describe 'restock' do
+    it 'prints candy stock!' do
+      expect do
+        candy.restock(2)
+      end.to output('Current candy stock: 2').to_stdout
+    end
+  end
+
+  describe 'funds' do
+    it 'tells us how much moneyz we gotttt' do
+      expect do
+        candy.funds(2)
+      end.to output("you've got 2 pounds for candy").to_stdout
+    end
+  end
+
 end
+
+
+
+#   describe '#awesome' do
+#     it 'prints awesome things' do
+#       expect do
+#         MakeIt.new.awesome('tests')
+#       end.to output('Awesome tests').to_stdout
+#     end
+#   end
 
 # candy = VendingMachine.new('candy')
 # candy.name ----> 'candy'
